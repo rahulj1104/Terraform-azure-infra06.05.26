@@ -1,33 +1,29 @@
 pipeline {
     agent any
 
-    environment {
-        TF = "C:\\Program Files\\TERRAFORM\\terraform.exe"
-    }
-
     stages {
 
         stage('Terraform Version') {
             steps {
-                bat "${env.TF} version"
+                bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" version'
             }
         }
 
         stage('Init') {
             steps {
-                bat "${env.TF} init"
+                bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" init'
             }
         }
 
         stage('Validate') {
             steps {
-                bat "${env.TF} validate"
+                bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" validate'
             }
         }
 
         stage('Plan') {
             steps {
-                bat "${env.TF} plan"
+                bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" plan'
             }
         }
     }
