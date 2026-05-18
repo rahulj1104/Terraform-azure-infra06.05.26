@@ -23,8 +23,13 @@ pipeline {
 
         stage('Plan') {
             steps {
-                bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" plan'
+                 bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" plan -var-file=nonsecretterraform.tfvars'
             }
         }
+        stage('Apply') {
+    steps {
+        bat '"C:\\Program Files\\TERRAFORM\\terraform.exe" apply -auto-approve -var-file=nonsecretterraform.tfvars"'
+    }
+}
     }
 }
